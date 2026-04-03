@@ -1,21 +1,20 @@
 name: Update GCC Prices
 
-# Trigger schedule: every 12 hours + manual dispatch
 on:
   schedule:
     - cron: "0 */12 * * *"  # every 12 hours
-  workflow_dispatch:        # allows manual run
+  workflow_dispatch:        # manual trigger
 
 jobs:
   update-prices:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repo
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: true  # important to allow git push
+          persist-credentials: false  # We'll set remote with token manually
 
       # 2️⃣ Set up Python
       - name: Set up Python 3.9
@@ -40,6 +39,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add prices.json history.json
           git commit -m "Automatic update of prices.json and history.json" || echo "No changes to commit"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Set remote URL using token to allow push
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/mana90/gcc-prices.git
+          git push origin HEAD:main
