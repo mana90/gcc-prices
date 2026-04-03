@@ -1,0 +1,196 @@
+[
+  {
+    "timestamp": "2026-04-03T11:13:51.804855",
+    "prices": {
+      "last_updated": "2026-04-03T11:13:51.804855",
+      "oil": {
+        "brent": {
+          "AED": 282.49,
+          "SAR": 288.45,
+          "QAR": 279.99,
+          "KWD": 23.76,
+          "BHD": 28.92,
+          "OMR": 29.58
+        },
+        "wti": {
+          "AED": 262.66,
+          "SAR": 268.2,
+          "QAR": 260.33,
+          "KWD": 22.09,
+          "BHD": 26.89,
+          "OMR": 27.5
+        }
+      },
+      "metals": {
+        "gold_per_gram": {
+          "24K": {
+            "AED": 563.5,
+            "SAR": 575.39,
+            "QAR": 558.51,
+            "KWD": 47.39,
+            "BHD": 57.69,
+            "OMR": 59.0
+          },
+          "22K": {
+            "AED": 521.75,
+            "SAR": 532.76,
+            "QAR": 517.13,
+            "KWD": 43.88,
+            "BHD": 53.42,
+            "OMR": 54.63
+          },
+          "21K": {
+            "AED": 500.25,
+            "SAR": 510.81,
+            "QAR": 495.82,
+            "KWD": 42.07,
+            "BHD": 51.22,
+            "OMR": 52.37
+          },
+          "18K": {
+            "AED": 428.75,
+            "SAR": 437.8,
+            "QAR": 424.96,
+            "KWD": 36.05,
+            "BHD": 43.9,
+            "OMR": 44.89
+          },
+          "14K": {
+            "AED": 334.5,
+            "SAR": 341.56,
+            "QAR": 331.54,
+            "KWD": 28.13,
+            "BHD": 34.25,
+            "OMR": 35.02
+          }
+        }
+      },
+      "fuel": {
+        "UAE": {
+          "AED": {
+            "24 Carat": 563.5,
+            "22 Carat": 521.75,
+            "21 Carat": 500.25,
+            "18 Carat": 428.75,
+            "14 Carat": 334.5,
+            "Super 98": 3.39,
+            "Special 95": 3.28,
+            "Eplus 91": 3.2,
+            "Diesel": 4.69,
+            "US DOLLAR (USD)": 0.27,
+            "EURO (EUR)": 0.24,
+            "BRITISH POUND (GBP)": 0.21,
+            "JAPANESE YEN (JPY)": 44.22,
+            "AUSTRALIAN DOLLAR (AUD)": 0.4,
+            "CANADIAN DOLLAR (CAD)": 0.38,
+            "SWISS FRANC (CHF)": 0.22,
+            "CHINESE RENMINBI YUAN (CNY)": 2.02
+          },
+          "SAR": {
+            "24 Carat": 575.39,
+            "22 Carat": 532.76,
+            "21 Carat": 510.81,
+            "18 Carat": 437.8,
+            "14 Carat": 341.56,
+            "Super 98": 3.46,
+            "Special 95": 3.35,
+            "Eplus 91": 3.27,
+            "Diesel": 4.79,
+            "US DOLLAR (USD)": 0.28,
+            "EURO (EUR)": 0.24,
+            "BRITISH POUND (GBP)": 0.21,
+            "JAPANESE YEN (JPY)": 45.15,
+            "AUSTRALIAN DOLLAR (AUD)": 0.41,
+            "CANADIAN DOLLAR (CAD)": 0.39,
+            "SWISS FRANC (CHF)": 0.22,
+            "CHINESE RENMINBI YUAN (CNY)": 2.07
+          },
+          "QAR": {
+            "24 Carat": 558.51,
+            "22 Carat": 517.13,
+            "21 Carat": 495.82,
+            "18 Carat": 424.96,
+            "14 Carat": 331.54,
+            "Super 98": 3.36,
+            "Special 95": 3.25,
+            "Eplus 91": 3.17,
+            "Diesel": 4.65,
+            "US DOLLAR (USD)": 0.27,
+            "EURO (EUR)": 0.23,
+            "BRITISH POUND (GBP)": 0.21,
+            "JAPANESE YEN (JPY)": 43.83,
+            "AUSTRALIAN DOLLAR (AUD)": 0.4,
+            "CANADIAN DOLLAR (CAD)": 0.38,
+            "SWISS FRANC (CHF)": 0.22,
+            "CHINESE RENMINBI YUAN (CNY)": 2.01
+          },
+          "KWD": {
+            "24 Carat": 47.39,
+            "22 Carat": 43.88,
+            "21 Carat": 42.07,
+            "18 Carat": 36.05,
+            "14 Carat": 28.13,
+            "Super 98": 0.29,
+            "Special 95": 0.28,
+            "Eplus 91": 0.27,
+            "Diesel": 0.39,
+            "US DOLLAR (USD)": 0.02,
+            "EURO (EUR)": 0.02,
+            "BRITISH POUND (GBP)": 0.02,
+            "JAPANESE YEN (JPY)": 3.72,
+            "AUSTRALIAN DOLLAR (AUD)": 0.03,
+            "CANADIAN DOLLAR (CAD)": 0.03,
+            "SWISS FRANC (CHF)": 0.02,
+            "CHINESE RENMINBI YUAN (CNY)": 0.17
+          },
+          "BHD": {
+            "24 Carat": 57.69,
+            "22 Carat": 53.42,
+            "21 Carat": 51.22,
+            "18 Carat": 43.9,
+            "14 Carat": 34.25,
+            "Super 98": 0.35,
+            "Special 95": 0.34,
+            "Eplus 91": 0.33,
+            "Diesel": 0.48,
+            "US DOLLAR (USD)": 0.03,
+            "EURO (EUR)": 0.02,
+            "BRITISH POUND (GBP)": 0.02,
+            "JAPANESE YEN (JPY)": 4.53,
+            "AUSTRALIAN DOLLAR (AUD)": 0.04,
+            "CANADIAN DOLLAR (CAD)": 0.04,
+            "SWISS FRANC (CHF)": 0.02,
+            "CHINESE RENMINBI YUAN (CNY)": 0.21
+          },
+          "OMR": {
+            "24 Carat": 59.0,
+            "22 Carat": 54.63,
+            "21 Carat": 52.37,
+            "18 Carat": 44.89,
+            "14 Carat": 35.02,
+            "Super 98": 0.35,
+            "Special 95": 0.34,
+            "Eplus 91": 0.34,
+            "Diesel": 0.49,
+            "US DOLLAR (USD)": 0.03,
+            "EURO (EUR)": 0.02,
+            "BRITISH POUND (GBP)": 0.02,
+            "JAPANESE YEN (JPY)": 4.63,
+            "AUSTRALIAN DOLLAR (AUD)": 0.04,
+            "CANADIAN DOLLAR (CAD)": 0.04,
+            "SWISS FRANC (CHF)": 0.02,
+            "CHINESE RENMINBI YUAN (CNY)": 0.21
+          }
+        }
+      },
+      "currency": {
+        "USD_AED": 3.6725,
+        "USD_SAR": 3.75,
+        "USD_QAR": 3.64,
+        "USD_KWD": 0.308828,
+        "USD_BHD": 0.376,
+        "USD_OMR": 0.384497
+      }
+    }
+  }
+]
