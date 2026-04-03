@@ -184,37 +184,31 @@ def build_gcc_prices():
 # ------------------------
 # Step 7: History
 # ------------------------
+import json
+from pathlib import Path
+
 HISTORY_FILE = "history.json"
-MAX_DAYS = 90  # 3 months
+MAX_ENTRIES = 180  # ~3 months if running daily
 
 def update_history(new_data):
-    if os.path.exists(HISTORY_FILE):
-        with open(HISTORY_FILE, "r") as f:
-            history = json.load(f)
-    else:
-        history = {}
+    history_path = Path(HISTORY_FILE)
+    history = []
 
-    today = datetime.utcnow().date().isoformat()
-    history["last_updated"] = new_data["last_updated"]
+    # Load existing history
+    if history_path.exists():
+        try:
+            history = json.loads(history_path.read_text())
+        except:
+            history = []
 
-    def update_category(cat_name):
-        if cat_name not in history:
-            history[cat_name] = {}
-        for item, values in new_data.get(cat_name, {}).items():
-            if item not in history[cat_name]:
-                history[cat_name][item] = {}
-            history[cat_name][item][today] = values
-            # Remove older than 90 days
-            keys_to_remove = [d for d in history[cat_name][item]
-                              if datetime.fromisoformat(d) < datetime.utcnow() - timedelta(days=MAX_DAYS)]
-            for k in keys_to_remove:
-                del history[cat_name][item][k]
+    # Append new snapshot
+    history.append(new_data)
 
-    for category in ["oil", "metals", "fuel"]:
-        update_category(category)
+    # Keep only the last MAX_ENTRIES
+    history = history[-MAX_ENTRIES:]
 
-    with open(HISTORY_FILE, "w") as f:
-        json.dump(history, f, indent=2)
+    # Save back
+    history_path.write_text(json.dumps(history, indent=2))
     print("📊 history.json updated")
 
 # ------------------------
