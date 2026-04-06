@@ -242,21 +242,48 @@ def build_gcc_prices():
 # ------------------------
 # Step 8: History
 # ------------------------
+# ------------------------
+# Step 8: Updated History Logic
+# ------------------------
 def update_history(new_data):
     history_path = Path(HISTORY_FILE)
     history = []
 
+    # 1. Load existing history
     if history_path.exists():
         try:
-            history = json.loads(history_path.read_text())
-        except:
+            with open(history_path, "r") as f:
+                history = json.load(f)
+                if not isinstance(history, list):
+                    history = []
+        except (json.JSONDecodeError, Exception) as e:
+            print(f"⚠️ Could not read history.json, starting fresh: {e}")
             history = []
 
-    history.append(new_data)
-    history = history[-MAX_ENTRIES:]
+    # 2. Format the snapshot for history
+    # We create a focused entry to keep the file size manageable
+    history_entry = {
+        "timestamp": new_data.get("last_updated"),
+        "crypto": new_data.get("crypto", {}),
+        "oil": new_data.get("oil", {}),
+        "metals": new_data.get("metals", {}),
+        "fuel": new_data.get("fuel", {})
+    }
 
-    history_path.write_text(json.dumps(history, indent=2))
-    print("📊 history.json updated")
+    # 3. Append and Trim
+    history.append(history_entry)
+    
+    # Keep only the last 180 entries (~3 months)
+    if len(history) > MAX_ENTRIES:
+        history = history[-MAX_ENTRIES:]
+
+    # 4. Atomic Write
+    try:
+        with open(history_path, "w") as f:
+            json.dump(history, f, indent=2)
+        print(f"📊 history.json updated ({len(history)} entries total)")
+    except Exception as e:
+        print(f"❌ Failed to write to history.json: {e}")
 
 # ------------------------
 # Run
