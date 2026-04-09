@@ -1,6 +1,6 @@
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from bs4 import BeautifulSoup
 from pathlib import Path
 
@@ -28,7 +28,7 @@ def get_currency():
         return {}
 
 # ------------------------
-# Step 2: Yahoo price (Oil / fallback gold)
+# Step 2: Yahoo price (Oil)
 # ------------------------
 def get_yahoo_price(symbol):
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
@@ -42,7 +42,7 @@ def get_yahoo_price(symbol):
         return None
 
 # ------------------------
-# Step 3A: Gold from Gulf News (AED per gram)
+# Step 3: Gold from Gulf News (AED per gram)
 # ------------------------
 def get_gold_all_karats_aed():
     karats_needed = ["24", "22", "21", "18", "14"]
@@ -107,8 +107,7 @@ def get_uae_fuel_prices_aed():
     return {}
 
 # ------------------------
-# Step 6: Crypto prices from FreeCryptoAPI
-# Fetches USD price per coin, converts to all GCC currencies
+# Step 6: Single crypto coin from FreeCryptoAPI
 # ------------------------
 def get_single_crypto(symbol, rates):
     try:
@@ -143,7 +142,6 @@ def get_single_crypto(symbol, rates):
 
         change_24h = float(coin.get("daily_change_percentage") or 0)
 
-        # Convert USD price to all GCC currencies
         converted = {}
         for c in GCC_CURRENCIES:
             if c in rates:
@@ -164,7 +162,27 @@ def get_single_crypto(symbol, rates):
         return None
 
 # ------------------------
-# Step 7: Build full JSON
+# Step 7: All crypto coins
+# ------------------------
+def get_crypto_prices(rates):
+    crypto = {}
+    for symbol in CRYPTO_SYMBOLS:
+        result = get_single_crypto(symbol, rates)
+        if result:
+            crypto[symbol] = result
+            print(f"✅ {symbol}: USD {result['usd_price']}")
+        else:
+            print(f"⚠️ {symbol}: skipped")
+
+    if crypto:
+        print(f"✅ Crypto fetched: {list(crypto.keys())}")
+    else:
+        print("⚠️ No crypto data fetched")
+
+    return crypto
+
+# ------------------------
+# Step 8: Build full JSON
 # ------------------------
 def build_gcc_prices():
     rates = get_currency()
@@ -173,7 +191,7 @@ def build_gcc_prices():
         return
 
     data = {
-        "last_updated": datetime.utcnow().isoformat(),
+        "last_updated": datetime.now(timezone.utc).replace(tzinfo=None).isoformat(),
         "oil": {},
         "metals": {},
         "fuel": {},
@@ -241,7 +259,7 @@ def build_gcc_prices():
     update_history(data)
 
 # ------------------------
-# Step 8: History
+# Step 9: History
 # ------------------------
 def update_history(new_data):
     history_path = Path(HISTORY_FILE)
@@ -258,12 +276,12 @@ def update_history(new_data):
             history = []
 
     history_entry = {
-        "timestamp": new_data.get("last_updated"),   # ← use "timestamp" consistently
-        "oil":      new_data.get("oil", {}),
-        "metals":   new_data.get("metals", {}),
-        "fuel":     new_data.get("fuel", {}),
-        "currency": new_data.get("currency", {}),
-        "crypto":   new_data.get("crypto", {})
+        "timestamp": new_data.get("last_updated"),
+        "oil":       new_data.get("oil", {}),
+        "metals":    new_data.get("metals", {}),
+        "fuel":      new_data.get("fuel", {}),
+        "currency":  new_data.get("currency", {}),
+        "crypto":    new_data.get("crypto", {})
     }
 
     history.append(history_entry)
