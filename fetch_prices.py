@@ -113,7 +113,7 @@ def get_uae_fuel_prices_aed():
 def get_single_crypto(symbol, rates):
     try:
         headers = {
-            "Authorization": f"Bearer {FREE_CRYPTO_API_KEY}",
+            "Authorization": f"Bearer {t3o6k1r63ciqsprlbat6}",
             "Accept": "application/json"
         }
         params = {"symbol": symbol}
