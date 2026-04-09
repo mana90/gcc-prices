@@ -125,29 +125,23 @@ def get_single_crypto(symbol, rates):
 
         data = res.json()
 
-        # API returns status as string "true"/"false"
-        status = str(data.get("status", "false")).lower()
-        if status != "true":
+        if data.get("status") != "success":
             print(f"FreeCryptoAPI error for {symbol}: {data.get('error', 'Unknown error')}")
             return None
 
-        coin = data.get("data", {})
-        if symbol in coin:
-            coin = coin[symbol]
-        if not coin:
+        symbols = data.get("symbols", [])
+        if not symbols:
             print(f"FreeCryptoAPI: No data for {symbol}")
             return None
 
-        usd_price = float(coin.get("price", 0))
+        coin = symbols[0]
+
+        usd_price = float(coin.get("last", 0))
         if usd_price == 0:
             print(f"FreeCryptoAPI: Zero price for {symbol}")
             return None
 
-        change_24h = float(coin.get("change_24h") or 0)
-        change_7d  = float(coin.get("change_7d") or 0)
-        market_cap = float(coin.get("market_cap") or 0)
-        volume_24h = float(coin.get("volume_24h") or 0)
-        name       = coin.get("name", symbol)
+        change_24h = float(coin.get("daily_change_percentage") or 0)
 
         # Convert USD price to all GCC currencies
         converted = {}
@@ -156,36 +150,18 @@ def get_single_crypto(symbol, rates):
                 converted[c] = round(usd_price * rates[c], 2)
 
         return {
-            "name": name,
+            "name": symbol,
             "usd_price": round(usd_price, 2),
             "percent_change_24h": round(change_24h, 2),
-            "percent_change_7d": round(change_7d, 2),
-            "market_cap_usd": round(market_cap, 2),
-            "volume_24h_usd": round(volume_24h, 2),
+            "percent_change_7d": 0.0,
+            "market_cap_usd": 0.0,
+            "volume_24h_usd": 0.0,
             "prices": converted
         }
 
     except Exception as e:
         print(f"FreeCryptoAPI fetch failed for {symbol}: {e}")
         return None
-
-
-def get_crypto_prices(rates):
-    crypto = {}
-    for symbol in CRYPTO_SYMBOLS:
-        result = get_single_crypto(symbol, rates)
-        if result:
-            crypto[symbol] = result
-            print(f"✅ {symbol}: USD {result['usd_price']}")
-        else:
-            print(f"⚠️ {symbol}: skipped")
-
-    if crypto:
-        print(f"✅ Crypto fetched: {list(crypto.keys())}")
-    else:
-        print("⚠️ No crypto data fetched")
-
-    return crypto
 
 # ------------------------
 # Step 7: Build full JSON
@@ -281,19 +257,17 @@ def update_history(new_data):
             print(f"⚠️ Could not read history.json, starting fresh: {e}")
             history = []
 
-    # Build history snapshot — structured for iOS app consumption
     history_entry = {
-        "last_updated": new_data.get("last_updated"),
+        "timestamp": new_data.get("last_updated"),   # ← use "timestamp" consistently
+        "oil":      new_data.get("oil", {}),
         "metals":   new_data.get("metals", {}),
         "fuel":     new_data.get("fuel", {}),
         "currency": new_data.get("currency", {}),
-        "oil":      new_data.get("oil", {}),
         "crypto":   new_data.get("crypto", {})
     }
 
     history.append(history_entry)
 
-    # Keep only the last MAX_ENTRIES
     if len(history) > MAX_ENTRIES:
         history = history[-MAX_ENTRIES:]
 
