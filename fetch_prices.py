@@ -7,12 +7,12 @@ from pathlib import Path
 # ------------------------
 # Config
 # ------------------------
-CMC_API_KEY = "df938ffcbc874247b373ffcccff0e100"
-CMC_URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
+FREE_CRYPTO_API_KEY = "t3o6k1r63ciqsprlbat6"
+FREE_CRYPTO_URL = "https://api.freecryptoapi.com/v1/getData"
 CRYPTO_SYMBOLS = ["BTC", "ETH", "BNB", "SOL", "XRP"]
 GCC_CURRENCIES = ["AED", "SAR", "QAR", "KWD", "BHD", "OMR"]
 HISTORY_FILE = "history.json"
-MAX_ENTRIES = 180  # ~3 months if running daily
+MAX_ENTRIES = 180  # ~3 months if running every 12 hours
 
 # ------------------------
 # Step 1: Fetch currency rates (USD -> GCC)
@@ -107,60 +107,83 @@ def get_uae_fuel_prices_aed():
     return {}
 
 # ------------------------
-# Step 6: Crypto prices from CoinMarketCap
-# Converts to all GCC currencies using live exchange rates
+# Step 6: Crypto prices from FreeCryptoAPI
+# Fetches USD price per coin, converts to all GCC currencies
 # ------------------------
-def get_crypto_prices(rates):
+def get_single_crypto(symbol, rates):
     try:
         headers = {
-            "X-CMC_PRO_API_KEY": CMC_API_KEY,
+            "Authorization": f"Bearer {FREE_CRYPTO_API_KEY}",
             "Accept": "application/json"
         }
-        params = {
-            "symbol": ",".join(CRYPTO_SYMBOLS),
-            "convert": "USD"  # fetch in USD, convert manually using rates
-        }
-        res = requests.get(CMC_URL, headers=headers, params=params, timeout=15)
+        params = {"symbol": symbol}
+        res = requests.get(FREE_CRYPTO_URL, headers=headers, params=params, timeout=15)
+
+        if res.status_code != 200:
+            print(f"FreeCryptoAPI HTTP {res.status_code} for {symbol}: {res.text}")
+            return None
+
         data = res.json()
 
-        if data.get("status", {}).get("error_code") != 0:
-            print(f"CMC API error: {data.get('status', {}).get('error_message')}")
-            return {}
+        # API returns status as string "true"/"false"
+        status = str(data.get("status", "false")).lower()
+        if status != "true":
+            print(f"FreeCryptoAPI error for {symbol}: {data.get('error', 'Unknown error')}")
+            return None
 
-        crypto = {}
-        for symbol in CRYPTO_SYMBOLS:
-            coin = data.get("data", {}).get(symbol)
-            if not coin:
-                continue
+        coin = data.get("data", {})
+        if not coin:
+            print(f"FreeCryptoAPI: No data for {symbol}")
+            return None
 
-            usd_price = coin["quote"]["USD"]["price"]
-            change_24h = coin["quote"]["USD"]["percent_change_24h"]
-            change_7d = coin["quote"]["USD"]["percent_change_7d"]
-            market_cap_usd = coin["quote"]["USD"]["market_cap"]
-            volume_24h_usd = coin["quote"]["USD"]["volume_24h"]
+        usd_price = float(coin.get("price", 0))
+        if usd_price == 0:
+            print(f"FreeCryptoAPI: Zero price for {symbol}")
+            return None
 
-            # Convert to each GCC currency
-            converted = {}
-            for c in GCC_CURRENCIES:
-                if c in rates:
-                    converted[c] = round(usd_price * rates[c], 2)
+        change_24h = float(coin.get("change_24h") or 0)
+        change_7d  = float(coin.get("change_7d") or 0)
+        market_cap = float(coin.get("market_cap") or 0)
+        volume_24h = float(coin.get("volume_24h") or 0)
+        name       = coin.get("name", symbol)
 
-            crypto[symbol] = {
-                "name": coin["name"],
-                "usd_price": round(usd_price, 2),
-                "percent_change_24h": round(change_24h, 2),
-                "percent_change_7d": round(change_7d, 2),
-                "market_cap_usd": round(market_cap_usd, 2),
-                "volume_24h_usd": round(volume_24h_usd, 2),
-                "prices": converted
-            }
+        # Convert USD price to all GCC currencies
+        converted = {}
+        for c in GCC_CURRENCIES:
+            if c in rates:
+                converted[c] = round(usd_price * rates[c], 2)
 
-        print(f"✅ Crypto fetched: {list(crypto.keys())}")
-        return crypto
+        return {
+            "name": name,
+            "usd_price": round(usd_price, 2),
+            "percent_change_24h": round(change_24h, 2),
+            "percent_change_7d": round(change_7d, 2),
+            "market_cap_usd": round(market_cap, 2),
+            "volume_24h_usd": round(volume_24h, 2),
+            "prices": converted
+        }
 
     except Exception as e:
-        print(f"CoinMarketCap fetch failed: {e}")
-        return {}
+        print(f"FreeCryptoAPI fetch failed for {symbol}: {e}")
+        return None
+
+
+def get_crypto_prices(rates):
+    crypto = {}
+    for symbol in CRYPTO_SYMBOLS:
+        result = get_single_crypto(symbol, rates)
+        if result:
+            crypto[symbol] = result
+            print(f"✅ {symbol}: USD {result['usd_price']}")
+        else:
+            print(f"⚠️ {symbol}: skipped")
+
+    if crypto:
+        print(f"✅ Crypto fetched: {list(crypto.keys())}")
+    else:
+        print("⚠️ No crypto data fetched")
+
+    return crypto
 
 # ------------------------
 # Step 7: Build full JSON
@@ -242,14 +265,10 @@ def build_gcc_prices():
 # ------------------------
 # Step 8: History
 # ------------------------
-# ------------------------
-# Step 8: Updated History Logic
-# ------------------------
 def update_history(new_data):
     history_path = Path(HISTORY_FILE)
     history = []
 
-    # 1. Load existing history
     if history_path.exists():
         try:
             with open(history_path, "r") as f:
@@ -260,24 +279,22 @@ def update_history(new_data):
             print(f"⚠️ Could not read history.json, starting fresh: {e}")
             history = []
 
-    # 2. Format the snapshot for history
-    # We create a focused entry to keep the file size manageable
+    # Build history snapshot — structured for iOS app consumption
     history_entry = {
-        "timestamp": new_data.get("last_updated"),
-        "crypto": new_data.get("crypto", {}),
-        "oil": new_data.get("oil", {}),
-        "metals": new_data.get("metals", {}),
-        "fuel": new_data.get("fuel", {})
+        "last_updated": new_data.get("last_updated"),
+        "metals":   new_data.get("metals", {}),
+        "fuel":     new_data.get("fuel", {}),
+        "currency": new_data.get("currency", {}),
+        "oil":      new_data.get("oil", {}),
+        "crypto":   new_data.get("crypto", {})
     }
 
-    # 3. Append and Trim
     history.append(history_entry)
-    
-    # Keep only the last 180 entries (~3 months)
+
+    # Keep only the last MAX_ENTRIES
     if len(history) > MAX_ENTRIES:
         history = history[-MAX_ENTRIES:]
 
-    # 4. Atomic Write
     try:
         with open(history_path, "w") as f:
             json.dump(history, f, indent=2)
