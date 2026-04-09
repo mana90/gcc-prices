@@ -132,6 +132,8 @@ def get_single_crypto(symbol, rates):
             return None
 
         coin = data.get("data", {})
+        if symbol in coin:
+            coin = coin[symbol]
         if not coin:
             print(f"FreeCryptoAPI: No data for {symbol}")
             return None
