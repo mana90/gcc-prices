@@ -2,7 +2,7 @@ name: Update GCC Prices
 
 on:
   schedule:
-    - cron: '0 */12 * * *'  # Every 12 hours
+    - cron: '0 7,13,19,1 * * *'
   workflow_dispatch:
 
 jobs:
