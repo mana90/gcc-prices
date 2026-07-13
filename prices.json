@@ -1,64 +1,64 @@
 {
-  "last_updated": "2026-07-12T19:59:40.851784",
+  "last_updated": "2026-07-13T04:23:10.346124",
   "oil": {
     "brent": {
-      "AED": 279.15,
-      "SAR": 285.04,
-      "QAR": 276.68,
-      "KWD": 23.51,
-      "BHD": 28.58,
-      "OMR": 29.23
+      "AED": 290.57,
+      "SAR": 296.7,
+      "QAR": 288.0,
+      "KWD": 24.44,
+      "BHD": 29.75,
+      "OMR": 30.42
     },
     "wti": {
-      "AED": 262.25,
-      "SAR": 267.79,
-      "QAR": 259.93,
-      "KWD": 22.09,
-      "BHD": 26.85,
-      "OMR": 27.46
+      "AED": 273.01,
+      "SAR": 278.78,
+      "QAR": 270.6,
+      "KWD": 22.97,
+      "BHD": 27.95,
+      "OMR": 28.58
     }
   },
   "metals": {
     "gold_per_gram": {
       "24K": {
-        "AED": 496.5,
-        "SAR": 506.98,
-        "QAR": 492.11,
-        "KWD": 41.82,
-        "BHD": 50.83,
-        "OMR": 51.98
+        "AED": 488.75,
+        "SAR": 499.06,
+        "QAR": 484.42,
+        "KWD": 41.11,
+        "BHD": 50.04,
+        "OMR": 51.17
       },
       "22K": {
-        "AED": 459.75,
-        "SAR": 469.45,
-        "QAR": 455.68,
-        "KWD": 38.72,
-        "BHD": 47.07,
-        "OMR": 48.13
+        "AED": 452.5,
+        "SAR": 462.05,
+        "QAR": 448.5,
+        "KWD": 38.07,
+        "BHD": 46.33,
+        "OMR": 47.38
       },
       "21K": {
-        "AED": 440.75,
-        "SAR": 450.05,
-        "QAR": 436.85,
-        "KWD": 37.12,
-        "BHD": 45.13,
-        "OMR": 46.14
+        "AED": 434.0,
+        "SAR": 443.16,
+        "QAR": 430.16,
+        "KWD": 36.51,
+        "BHD": 44.43,
+        "OMR": 45.44
       },
       "18K": {
-        "AED": 377.75,
-        "SAR": 385.72,
-        "QAR": 374.41,
-        "KWD": 31.82,
-        "BHD": 38.68,
-        "OMR": 39.55
+        "AED": 372.0,
+        "SAR": 379.85,
+        "QAR": 368.71,
+        "KWD": 31.29,
+        "BHD": 38.09,
+        "OMR": 38.95
       },
       "14K": {
-        "AED": 294.75,
-        "SAR": 300.97,
-        "QAR": 292.14,
-        "KWD": 24.83,
-        "BHD": 30.18,
-        "OMR": 30.86
+        "AED": 290.25,
+        "SAR": 296.38,
+        "QAR": 287.68,
+        "KWD": 24.42,
+        "BHD": 29.72,
+        "OMR": 30.39
       }
     }
   },
@@ -100,89 +100,89 @@
     "USD_AED": 3.6725,
     "USD_SAR": 3.75,
     "USD_QAR": 3.64,
-    "USD_KWD": 0.309318,
+    "USD_KWD": 0.308938,
     "USD_BHD": 0.376,
     "USD_OMR": 0.384497
   },
   "crypto": {
     "BTC": {
       "name": "BTC",
-      "usd_price": 64228.59,
-      "percent_change_24h": -0.24,
+      "usd_price": 62896.42,
+      "percent_change_24h": -2.03,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 235879.5,
-        "SAR": 240857.21,
-        "QAR": 233792.07,
-        "KWD": 19867.06,
-        "BHD": 24149.95,
-        "OMR": 24695.7
+        "AED": 230987.1,
+        "SAR": 235861.57,
+        "QAR": 228942.97,
+        "KWD": 19431.09,
+        "BHD": 23649.05,
+        "OMR": 24183.48
       }
     },
     "ETH": {
       "name": "ETH",
-      "usd_price": 1821.39,
-      "percent_change_24h": -0.25,
+      "usd_price": 1783.01,
+      "percent_change_24h": -2.1,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 6689.05,
-        "SAR": 6830.21,
-        "QAR": 6629.86,
-        "KWD": 563.39,
-        "BHD": 684.84,
-        "OMR": 700.32
+        "AED": 6548.1,
+        "SAR": 6686.29,
+        "QAR": 6490.16,
+        "KWD": 550.84,
+        "BHD": 670.41,
+        "OMR": 685.56
       }
     },
     "BNB": {
       "name": "BNB",
-      "usd_price": 579.86,
-      "percent_change_24h": -0.19,
+      "usd_price": 569.54,
+      "percent_change_24h": -1.61,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 2129.54,
-        "SAR": 2174.47,
-        "QAR": 2110.69,
-        "KWD": 179.36,
-        "BHD": 218.03,
-        "OMR": 222.95
+        "AED": 2091.64,
+        "SAR": 2135.77,
+        "QAR": 2073.13,
+        "KWD": 175.95,
+        "BHD": 214.15,
+        "OMR": 218.99
       }
     },
     "SOL": {
       "name": "SOL",
-      "usd_price": 77.67,
-      "percent_change_24h": -0.64,
+      "usd_price": 76.12,
+      "percent_change_24h": -1.72,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 285.24,
-        "SAR": 291.26,
-        "QAR": 282.72,
-        "KWD": 24.02,
-        "BHD": 29.2,
-        "OMR": 29.86
+        "AED": 279.55,
+        "SAR": 285.45,
+        "QAR": 277.08,
+        "KWD": 23.52,
+        "BHD": 28.62,
+        "OMR": 29.27
       }
     },
     "XRP": {
       "name": "XRP",
-      "usd_price": 1.1,
-      "percent_change_24h": -1.27,
+      "usd_price": 1.08,
+      "percent_change_24h": -2.16,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 4.04,
-        "SAR": 4.13,
-        "QAR": 4.01,
-        "KWD": 0.34,
-        "BHD": 0.41,
-        "OMR": 0.42
+        "AED": 3.95,
+        "SAR": 4.03,
+        "QAR": 3.92,
+        "KWD": 0.33,
+        "BHD": 0.4,
+        "OMR": 0.41
       }
     }
   }
