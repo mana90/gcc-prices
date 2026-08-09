@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-08T19:20:04.932330",
+  "last_updated": "2026-08-09T02:55:39.742152",
   "oil": {
     "brent": {
       "AED": 306.84,
@@ -13,7 +13,7 @@
       "AED": 287.12,
       "SAR": 293.18,
       "QAR": 284.58,
-      "KWD": 24.15,
+      "KWD": 24.14,
       "BHD": 29.4,
       "OMR": 30.06
     }
@@ -24,7 +24,7 @@
         "AED": 523.25,
         "SAR": 534.29,
         "QAR": 518.62,
-        "KWD": 44.0,
+        "KWD": 43.99,
         "BHD": 53.57,
         "OMR": 54.78
       },
@@ -32,7 +32,7 @@
         "AED": 484.5,
         "SAR": 494.72,
         "QAR": 480.21,
-        "KWD": 40.75,
+        "KWD": 40.73,
         "BHD": 49.6,
         "OMR": 50.73
       },
@@ -40,7 +40,7 @@
         "AED": 464.5,
         "SAR": 474.3,
         "QAR": 460.39,
-        "KWD": 39.06,
+        "KWD": 39.05,
         "BHD": 47.56,
         "OMR": 48.63
       },
@@ -48,7 +48,7 @@
         "AED": 475.12,
         "SAR": 485.15,
         "QAR": 470.92,
-        "KWD": 39.96,
+        "KWD": 39.95,
         "BHD": 48.64,
         "OMR": 49.74
       },
@@ -100,86 +100,86 @@
     "USD_AED": 3.6725,
     "USD_SAR": 3.75,
     "USD_QAR": 3.64,
-    "USD_KWD": 0.308847,
+    "USD_KWD": 0.30877,
     "USD_BHD": 0.376,
     "USD_OMR": 0.384497
   },
   "crypto": {
     "BTC": {
       "name": "BTC",
-      "usd_price": 65020.14,
-      "percent_change_24h": 0.07,
+      "usd_price": 64817.08,
+      "percent_change_24h": -0.41,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 238786.46,
-        "SAR": 243825.52,
-        "QAR": 236673.31,
-        "KWD": 20081.28,
-        "BHD": 24447.57,
-        "OMR": 25000.05
+        "AED": 238040.73,
+        "SAR": 243064.05,
+        "QAR": 235934.17,
+        "KWD": 20013.57,
+        "BHD": 24371.22,
+        "OMR": 24921.97
       }
     },
     "ETH": {
       "name": "ETH",
-      "usd_price": 1921.16,
-      "percent_change_24h": 0.33,
+      "usd_price": 1914.65,
+      "percent_change_24h": -0.3,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 7055.46,
-        "SAR": 7204.35,
-        "QAR": 6993.02,
-        "KWD": 593.34,
-        "BHD": 722.36,
-        "OMR": 738.68
+        "AED": 7031.55,
+        "SAR": 7179.94,
+        "QAR": 6969.33,
+        "KWD": 591.19,
+        "BHD": 719.91,
+        "OMR": 736.18
       }
     },
     "BNB": {
       "name": "BNB",
-      "usd_price": 603.0,
-      "percent_change_24h": 1.7,
+      "usd_price": 600.88,
+      "percent_change_24h": -0.23,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 2214.52,
-        "SAR": 2261.25,
-        "QAR": 2194.92,
-        "KWD": 186.23,
-        "BHD": 226.73,
-        "OMR": 231.85
+        "AED": 2206.73,
+        "SAR": 2253.3,
+        "QAR": 2187.2,
+        "KWD": 185.53,
+        "BHD": 225.93,
+        "OMR": 231.04
       }
     },
     "SOL": {
       "name": "SOL",
-      "usd_price": 76.05,
-      "percent_change_24h": 3.01,
+      "usd_price": 75.84,
+      "percent_change_24h": -0.55,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 279.29,
-        "SAR": 285.19,
-        "QAR": 276.82,
-        "KWD": 23.49,
-        "BHD": 28.59,
-        "OMR": 29.24
+        "AED": 278.52,
+        "SAR": 284.4,
+        "QAR": 276.06,
+        "KWD": 23.42,
+        "BHD": 28.52,
+        "OMR": 29.16
       }
     },
     "XRP": {
       "name": "XRP",
-      "usd_price": 1.04,
-      "percent_change_24h": 1.58,
+      "usd_price": 1.03,
+      "percent_change_24h": -0.75,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 3.82,
-        "SAR": 3.9,
-        "QAR": 3.79,
+        "AED": 3.8,
+        "SAR": 3.88,
+        "QAR": 3.77,
         "KWD": 0.32,
         "BHD": 0.39,
         "OMR": 0.4
