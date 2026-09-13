@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-12T21:04:15.377691",
+  "last_updated": "2026-09-13T05:28:11.592731",
   "oil": {
     "brent": {
       "AED": 384.18,
@@ -13,7 +13,7 @@
       "AED": 367.43,
       "SAR": 375.19,
       "QAR": 364.18,
-      "KWD": 30.84,
+      "KWD": 30.83,
       "BHD": 37.62,
       "OMR": 38.47
     }
@@ -24,7 +24,7 @@
         "AED": 524.0,
         "SAR": 535.06,
         "QAR": 519.36,
-        "KWD": 43.98,
+        "KWD": 43.97,
         "BHD": 53.65,
         "OMR": 54.86
       },
@@ -32,7 +32,7 @@
         "AED": 485.25,
         "SAR": 495.49,
         "QAR": 480.96,
-        "KWD": 40.73,
+        "KWD": 40.72,
         "BHD": 49.68,
         "OMR": 50.8
       },
@@ -40,7 +40,7 @@
         "AED": 465.25,
         "SAR": 475.07,
         "QAR": 461.13,
-        "KWD": 39.05,
+        "KWD": 39.04,
         "BHD": 47.63,
         "OMR": 48.71
       },
@@ -48,7 +48,7 @@
         "AED": 398.75,
         "SAR": 407.16,
         "QAR": 395.22,
-        "KWD": 33.47,
+        "KWD": 33.46,
         "BHD": 40.83,
         "OMR": 41.75
       },
@@ -100,89 +100,89 @@
     "USD_AED": 3.6725,
     "USD_SAR": 3.75,
     "USD_QAR": 3.64,
-    "USD_KWD": 0.308232,
+    "USD_KWD": 0.308184,
     "USD_BHD": 0.376,
     "USD_OMR": 0.384497
   },
   "crypto": {
     "BTC": {
       "name": "BTC",
-      "usd_price": 77208.19,
-      "percent_change_24h": 0.05,
+      "usd_price": 77277.69,
+      "percent_change_24h": 0.14,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 283547.08,
-        "SAR": 289530.71,
-        "QAR": 281037.81,
-        "KWD": 23798.03,
-        "BHD": 29030.28,
-        "OMR": 29686.32
+        "AED": 283802.32,
+        "SAR": 289791.34,
+        "QAR": 281290.79,
+        "KWD": 23815.75,
+        "BHD": 29056.41,
+        "OMR": 29713.04
       }
     },
     "ETH": {
       "name": "ETH",
-      "usd_price": 2522.92,
-      "percent_change_24h": 0.08,
+      "usd_price": 2521.2,
+      "percent_change_24h": 0.02,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 9265.42,
-        "SAR": 9460.95,
-        "QAR": 9183.43,
-        "KWD": 777.64,
-        "BHD": 948.62,
-        "OMR": 970.06
+        "AED": 9259.11,
+        "SAR": 9454.5,
+        "QAR": 9177.17,
+        "KWD": 776.99,
+        "BHD": 947.97,
+        "OMR": 969.39
       }
     },
     "BNB": {
       "name": "BNB",
-      "usd_price": 726.63,
-      "percent_change_24h": 0.03,
+      "usd_price": 726.01,
+      "percent_change_24h": -0.06,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 2668.55,
-        "SAR": 2724.86,
-        "QAR": 2644.93,
-        "KWD": 223.97,
-        "BHD": 273.21,
-        "OMR": 279.39
+        "AED": 2666.27,
+        "SAR": 2722.54,
+        "QAR": 2642.68,
+        "KWD": 223.74,
+        "BHD": 272.98,
+        "OMR": 279.15
       }
     },
     "SOL": {
       "name": "SOL",
-      "usd_price": 101.48,
-      "percent_change_24h": 0.11,
+      "usd_price": 101.84,
+      "percent_change_24h": 0.46,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 372.69,
-        "SAR": 380.55,
-        "QAR": 369.39,
-        "KWD": 31.28,
-        "BHD": 38.16,
-        "OMR": 39.02
+        "AED": 374.01,
+        "SAR": 381.9,
+        "QAR": 370.7,
+        "KWD": 31.39,
+        "BHD": 38.29,
+        "OMR": 39.16
       }
     },
     "XRP": {
       "name": "XRP",
       "usd_price": 1.37,
-      "percent_change_24h": 0.07,
+      "percent_change_24h": 0.15,
       "percent_change_7d": 0.0,
       "market_cap_usd": 0.0,
       "volume_24h_usd": 0.0,
       "prices": {
-        "AED": 5.01,
+        "AED": 5.02,
         "SAR": 5.12,
         "QAR": 4.97,
         "KWD": 0.42,
         "BHD": 0.51,
-        "OMR": 0.52
+        "OMR": 0.53
       }
     }
   }
